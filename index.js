@@ -29,27 +29,36 @@ const gamesContainer = document.getElementById("games-container");
 function addGamesToPage(games) {
 
     // loop over each item in the data
-
+        games.forEach(element => {
 
         // create a new div element, which will become the game card
-
+            let card = document.createElement("div");
 
         // add the class game-card to the list
-
+            card.classList.add('game-card');
 
         // set the inner HTML using a template literal to display some info 
         // about each game
         // TIP: if your images are not displaying, make sure there is space
         // between the end of the src attribute and the end of the tag ("/>")
-
+            card.innerHTML = `
+                <img src=${element.img} class="game-img" />
+                <br/><br/>
+                <strong>${element.name}</strong>
+                <br>
+                <p>${element.description}</p>
+                <p>Backers: ${element.backers}</p>
+            `;
 
         // append the game to the games-container
-
+        gamesContainer.appendChild(card);
+        })
 }
 
 // call the function we just defined using the correct variable
 // later, we'll call this function using a different list of games
 
+addGamesToPage(GAMES_JSON);
 
 /*************************************************************************************
  * Challenge 4: Create the summary statistics at the top of the page displaying the
